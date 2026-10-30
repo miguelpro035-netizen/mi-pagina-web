@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Personal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        :root {
+            --azul-oscuro: #0A1A2F;
+            --azul-medio: #163A5F;
+            --resaltado: #00A8E8;
+            --negro: #0F0F14;
+            --tarjeta: #181820;
+            --borde: #252530;
+            --texto-claro: #E6E6EF;
+            --texto-gris: #9494A8;
+        }
+
+        body {
+            background: linear-gradient(180deg, var(--negro) 0%, var(--azul-oscuro) 100%);
+            color: var(--texto-claro);
+            min-height: 100vh;
+        }
+
+        /* ========== BARRA DE NAVEGACIÓN ========== */
+        .navbar {
+            background: var(--azul-medio);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--resaltado);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar h1 {
+            font-size: 1.3rem;
+            color: white;
+        }
+
+        .nav-enlaces a {
+            color: var(--texto-claro);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-enlaces a:hover {
+            color: var(--resaltado);
+        }
+
+        /* ========== CARRUSEL DE 3 IMÁGENES ========== */
+        .carrusel {
+            max-width: 900px;
+            margin: 2rem auto;
+            overflow: hidden;
+            border-radius: 14px;
+            border: 2px solid var(--borde);
+        }
+
+        .carrusel-imagenes {
+            display: flex;
+            width: 300%;
+            animation: deslizar 12s infinite;
+        }
+
+        .carrusel-imagenes img {
+            width: 33.33%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        @keyframes deslizar {
+            0%, 30% { transform: translateX(0); }
+            33%, 63% { transform: translateX(-33.33%); }
+            66%, 96% { transform: translateX(-66.66%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* ========== CONTENEDOR PRINCIPAL ========== */
+        .contenedor {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.2rem 3rem;
+        }
+
+        .seccion {
+            margin-bottom: 3rem;
+        }
+
+        .titulo-seccion {
+            font-size: 1.4rem;
+            color: var(--resaltado);
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--borde);
+        }
+
+        /* ========== TARJETAS ========== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+
+        .tarjeta {
+            background: var(--tarjeta);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--borde);
+            border-left: 3px solid var(--resaltado);
+        }
+
+        .tarjeta h3 {
+            color: var(--resaltado);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .tarjeta ul {
+            list-style: none;
+        }
+
+        .tarjeta li {
+            color: var(--texto-gris);
+            padding: 0.3rem 0;
+        }
+
+        .tarjeta li::before {
+            content: "✓ ";
+            color: var(--resaltado);
+        }
+
+        /* ========== TABLAS ========== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--tarjeta);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--borde);
+        }
+
+        th, td {
+            padding: 0.9rem;
+            text-align: left;
+            border-bottom: 1px solid var(--borde);
+            color: var(--texto-gris);
+        }
+
+        th {
+            background: var(--azul-medio);
+            color: white;
+        }
+
+        tr:hover {
+            background: rgba(0, 168, 232, 0.05);
+        }
+
+        /* ========== FRASE CARACTERÍSTICA ========== */
+        .frase {
+            background: linear-gradient(90deg, var(--azul-medio), #1E5A8F);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .frase span {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* ========== PIE DE PÁGINA - REDES SOCIALES ========== */
+        footer {
+            background: var(--tarjeta);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border-top: 2px solid var(--borde);
+        }
+
+        .redes {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .boton-red {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.6rem;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .boton-red:hover {
+            transform: scale(1.15);
+        }
+
+        .whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .facebook {
+            background: #1877F2;
+            color: white;
+        }
+
+        .tiktok {
+            background: #000000;
+            color: white;
+            border: 1px solid #333;
+        }
+
+        /* ========== RESPONSIVO ========== */
+        @media (max-width: 650px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .nav-enlaces {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== BARRA DE NAVEGACIÓN ========== -->
+    <nav class="navbar">
+        <h1>🌍 Mi Página Personal</h1>
+        <div class="nav-enlaces">
+            <a href="#inicio">Inicio</a>
+            <a href="#pasatiempos">Pasatiempos</a>
+            <a href="#horario">Horario</a>
+            <a href="#musica">Música y Juegos</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+    </nav>
+
+    <!-- ========== CARRUSEL - 3 IMÁGENES ========== -->
+    <div class="carrusel">
+        <div class="carrusel-imagenes">
+            <img src="panter.gif" alt="GIF 1">
+            <img src="panter1.gif" alt="GIF 2">
+            <img src="panter8.gif" alt="GIF 3">
+        </div>
+    </div>
+
+    <div class="contenedor">
+
+        <!-- ========== PASATIEMPOS E INTERESES ========== -->
+        <section id="pasatiempos" class="seccion">
+            <h2 class="titulo-seccion">📌 Pasatiempos e Intereses</h2>
+            <div class="grid-2">
+                <div class="tarjeta">
+                    <h3>⏳ Pasatiempos (No productivo)</h3>
+                    <ul>
+                        <li>Hacer deporte y ejercicio físico</li>
+                        <li>Escuchar música</li>
+                        <li>Ver videos y estar en redes sociales</li>
+                    </ul>
+                </div>
+                <div class="tarjeta">
+                    <h3>🎯 Intereses (Productivo)</h3>
+                    <ul>
+                        <li>Tocar instrumentos: bajo, percusión, batería, piano</li>
+                        <li>Cantar y animar</li>
+                        <li>Estudiar y practicar notas musicales</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== HORARIO INFATABLE DIARIO ========== -->
+        <section id="horario" class="seccion">
+            <h2 class="titulo-seccion">📅 Horario Infaltable Diario</h2>
+            <table>
+                <tr>
+                    <th>Hora</th>
+                    <th>Actividad</th>
+                </tr>
+                <tr>
+                    <td>7:00 — 8:00</td>
+                    <td>Desayuno y preparación</td>
+                </tr>
+                <tr>
+                    <td>8:00 — 13:00</td>
+                    <td>Clases / Estudio</td>
+                </tr>
+                <tr>
+                    <td>14:00 — 16:00</td>
+                    <td>Almuerzo y descanso</td>
+                </tr>
+                <tr>
+                    <td>16:00 — 18:00</td>
+                    <td>Práctica de instrumentos y música</td>
+                </tr>
+                <tr>
+                    <td>18:00 — 20:00</td>
+                    <td>Deporte y ejercicio físico</td>
+                </tr>
+                <tr>
+                    <td>20:00 — 22:00</td>
+                    <td>Cena, descanso y tiempo libre</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- ========== MÚSICA Y JUEGOS ========== -->
+        <section id="musica" class="seccion">
+            <h2 class="titulo-seccion">🎵 Música y Juegos Favoritos</h2>
+            <div class="grid-2">
+                <div class="tarjeta">
+                    <h3>🎧 Música Favorita</h3>
+                    <table>
+                        <tr>
+                            <th>Género</th>
+                            <th>Descripción</th>
+                        </tr>
+                        <tr>
+                            <td>Bachata</td>
+                            <td>Mis canciones favoritas</td>
+                        </tr>
+                        <tr>
+                            <td>Escondidas</td>
+                            <td>Varias canciones</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tarjeta">
+                    <h3>🎮 Juegos Favoritos</h3>
+                    <table>
+                        <tr>
+                            <th>Juego</th>
+                            <th>Plataforma</th>
+                        </tr>
+                        <tr>
+                            <td>Mobile Legends</td>
+                            <td>Celular</td>
+                        </tr>
+                        <tr>
+                            <td>Dota 1 y Dota 2</td>
+                            <td>PC</td>
+                        </tr>
+                        <tr>
+                            <td>League of Legends</td>
+                            <td>PC</td>
+                        </tr>
+                        <tr>
+                            <td>Call of Duty</td>
+                            <td>Celular / PC</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== FRASE CARACTERÍSTICA ========== -->
+        <section class="seccion">
+            <h2 class="titulo-seccion">💬 Mi Frase Característica</h2>
+            <div class="frase">
+                "SI CREES QUE ESTAS VENCIDO, VENCIDO ESTAS, SI CREES QUE LO LOGRARAS PUES INTENTALO ¡¡CARAJO!!."
+                <span>— ¡NUNCA DEJES DE INTENTARLO!</span>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ========== PIE DE PÁGINA - REDES SOCIALES ========== -->
+    <footer id="contacto">
+        <h3 style="margin-bottom: 1rem; color: var(--resaltado); font-size: 1.3rem;">🌐 Conéctate conmigo</h3>
+        <div class="redes">
+            <a href="https://wa.me/+591 75293667" targeto ="_blank" class="boton-red whatsapp">💬</a>
+            <a href="https://facebook.com/https://www.facebook.com/share/1GqrFy116K/" target="_blank" class="boton-red facebook">f</a>
+            <a href="https://tiktok.com/https://www.tiktok.com/@panna_miguel7?_r=1&_t=ZS-9AzGb7kLrdg" target="_blank" class="boton-red tiktok">♪</a>
+        </div>
+        <p style="color: var(--texto-gris); font-size: 0.85rem; margin-top: 1rem;">© 2026 — Mi Página Personal | Con esfuerzo y dedicación "Romanticos Por Siempre.." (Lealtad o Muerte) 😎✨</p>
+    </footer>
+
+</body>
+</html>`
